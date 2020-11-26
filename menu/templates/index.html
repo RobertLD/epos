@@ -1,0 +1,7 @@
+{% for section in menu.section_set.all %}     
+    <h1>{{ section.name }}</h1>      
+    {% for food in section.food_set.all %}         
+        <p>{{ food.name }} </p>       
+        <p>{{ food.description }}</p>      
+    {% endfor %} 
+{% endfor %} 
