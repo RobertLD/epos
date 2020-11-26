@@ -18,3 +18,5 @@ class Food(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=250)
+    image = models.FileField(upload_to='img')
+    price = models.IntegerField(default = 0)

@@ -1,7 +1,47 @@
-{% for section in menu.section_set.all %}     
-    <h1>{{ section.name }}</h1>      
-    {% for food in section.food_set.all %}         
-        <p>{{ food.name }} </p>       
-        <p>{{ food.description }}</p>      
-    {% endfor %} 
-{% endfor %} 
+
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block page_content %}
+
+{%for section in menu.section_set.all %}
+<h1>{{section.name}} </h1>
+
+<div class="row">
+
+{% for food in section.food_set.all %}
+
+    <div class="col-md-4">
+
+        <div class="card mb-2">
+
+            <img class="card-img-top" src="{% static food.image.url %}">
+
+            <div class="card-body">
+
+                <h5 class="card-title">{{ food.name }}</h5>
+
+                <p class="card-text">{{ food.description }}</p>
+                <p class="card-text">${{ food.price }}</p>
+                <a href=""  
+
+                   class="btn btn-primary">
+
+                    Add to cart
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+{% endfor %}
+
+{% endblock %}
