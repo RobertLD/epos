@@ -11,20 +11,20 @@
 
 <div class="row">
 
-{% for food in section.food_set.all %}
+{% for product in section.product_set.all %}
 
     <div class="col-md-4">
 
         <div class="card mb-2">
 
-            <img class="card-img-top" src="{% static food.image.url %}">
+            <img class="card-img-top" src="{% static product.image.url %}">
 
             <div class="card-body">
 
-                <h5 class="card-title">{{ food.name }}</h5>
+                <h5 class="card-title">{{ product.name }}</h5>
 
-                <p class="card-text">{{ food.description }}</p>
-                <p class="card-text">${{ food.price }}</p>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text">${{ product.price }}</p>
                 <a href=""  
 
                    class="btn btn-primary">
@@ -33,7 +33,7 @@
 
                 </a>
                 <button 
-                    data-product = "{{food.id}}" 
+                    data-product = "{{product.id}}" 
                     data-action = "add" 
                     class = "btn btn-outline-secondary add-btn update-cart"> Add to Cart
                 </button>

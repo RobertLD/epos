@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from menu.models import Restaurant, Menu
+from menu.models import Restaurant, Menu, Order, Customer, Product
 from django.http import JsonResponse
+from .utils import cookieCart, cartData, guestOrder
+import json
+
 def index(request):
     model = Restaurant
     template_name = 'name'
@@ -12,4 +15,12 @@ def index(request):
 
 
 def updateItem(request):
+    data = json.loads(request.body)
+    productId =  data['productId']
+    action =  data['action']
+    customer = request.user.customer
+    product = Product.objects.get(id=productId)
+    print("Action:", action)
+    print("ProductId", productId)
+    order, created = Order.objects.get_or_create(customer = customer, complete=False)
     return JsonResponse('Item was added', safe = False)
