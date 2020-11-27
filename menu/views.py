@@ -18,9 +18,12 @@ def updateItem(request):
     data = json.loads(request.body)
     productId =  data['productId']
     action =  data['action']
-    customer = request.user.customer
+    user = request.user
+    #customer = request.user.customer    
     product = Product.objects.get(id=productId)
+
     print("Action:", action)
+    print("User", user)
     print("ProductId", productId)
-    order, created = Order.objects.get_or_create(customer = customer, complete=False)
+    #order, created = Order.objects.get_or_create(customer = customer, complete=False)
     return JsonResponse('Item was added', safe = False)
